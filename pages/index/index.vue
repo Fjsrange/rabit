@@ -1,52 +1,45 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
-	</view>
+	<swiper class="banner" indicator-dots autoplay interval="3000" circular>
+		<swiper-item v-for="item in images" :key="item.id">
+			<image :src="item.url" @tap="onPrveImg(item.url)"></image>
+		</swiper-item>
+	</swiper>
 </template>
 
 <script>
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				images: [
+					{id: '1', url: "https://pcapi-xiaotuxian-front-devtest.itheima.net/miniapp/uploads/goods_preview_1.jpg"},
+					{id: '2', url: "https://pcapi-xiaotuxian-front-devtest.itheima.net/miniapp/uploads/goods_preview_2.jpg"},
+					{id: '3', url: "https://pcapi-xiaotuxian-front-devtest.itheima.net/miniapp/uploads/goods_preview_3.jpg"},
+					{id: '4', url: "https://pcapi-xiaotuxian-front-devtest.itheima.net/miniapp/uploads/goods_preview_4.jpg"},
+					{id: '5', url: "https://pcapi-xiaotuxian-front-devtest.itheima.net/miniapp/uploads/goods_preview_5.jpg"},
+				],
 			}
 		},
 		onLoad() {
-
+			
 		},
 		methods: {
-
+			// 点击预览轮播图
+			onPrveImg(url){
+				console.log(url);
+				uni.previewImage({
+					urls: this.images.map(v=>v.url),
+					current: url
+				})
+			},
 		}
 	}
 </script>
 
 <style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+	.banner,
+	.banner image{
+		/* width: 100%; */
+		width: 750rpx;
+		height: 750rpx;
 	}
 </style>
