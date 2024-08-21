@@ -1,6 +1,6 @@
 {
-    "name" : "rabit",
-    "appid" : "",
+    "name" : "uniapp-rabit",
+    "appid" : "__UNI__651DF60",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -68,5 +68,5 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "2"
+    "vueVersion" : "3"
 }
